@@ -14,6 +14,7 @@ class CocktailsTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         fetchData(from: URLS.cocktailsRecipes.rawValue )
+        
     }
 
     // MARK: - Table view data source
