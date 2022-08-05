@@ -8,7 +8,7 @@
 import Foundation
 
 struct Cocktails: Decodable {
-    let drinks: [Drink]
+    var drinks: [Drink]
 }
 
 
@@ -50,13 +50,28 @@ struct Drink: Decodable {
     let strMeasure13: String?
     let strMeasure14: String?
     let strMeasure15: String?
-
-    
-    
-    
-    
+   
 }
 
-enum URLS: String {
-case cocktailsRecipes = "https://www.thecocktaildb.com/api/json/v1/1/search.php?f=a"
+struct DataApi {
+    var url: String
+    var alphaBet: [String]
+    var alphaBetIndex: Int
+    var isFetching: Bool
+    
+    var urlString: String
+    
+    static func getDataApi () -> DataApi {
+        DataApi(
+            url: DataManager.shared.cocktailsRecipes,
+            alphaBet: DataManager.shared.alphabet,
+            alphaBetIndex: DataManager.shared.alphaBetIndex,
+            isFetching: DataManager.shared.isFetching,
+            urlString: DataManager.shared.urlString
+        )
+        
+    }
 }
+
+
+

@@ -8,46 +8,30 @@
 import UIKit
 
 class CocktailsDetailsViewController: UIViewController {
-  
+    
     @IBOutlet weak var ingredientsLabel: UITextView!
     @IBOutlet weak var descriptionLabel: UITextView!
-    
     @IBOutlet weak var alhoholInfoLabel: UILabel!
     @IBOutlet weak var imageView: CocktailsImageView!{
         didSet{
             imageView.layer.cornerRadius = imageView.frame.height / 3
         }
     }
-    
-    var cocktail: Drink!
-    
+     var cocktail: Drink!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         updateUserInfo()
         createIngrediets()
-        title = "Cocktail: \(cocktail.strDrink)"
+        title = cocktail.strDrink
         descriptionLabel.text = cocktail.strInstructions
-        DispatchQueue.global().async {
+        
+        DispatchQueue.main.async {
+            self.imageView.fetchImage(from: self.cocktail.strDrinkThumb)
             
-            DispatchQueue.main.async {
-                self.imageView.fetchImage(from: self.cocktail.strDrinkThumb)
-                
-            }
         }
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-    
+ 
     private func addIngridients(measure: String?, ingridients: String?) {
         guard measure != nil else { return }
         ingredientsLabel.text! += measure!
@@ -79,5 +63,5 @@ class CocktailsDetailsViewController: UIViewController {
         addIngridients(measure: cocktail.strMeasure14, ingridients: cocktail.strIngredient14)
         addIngridients(measure: cocktail.strMeasure15, ingridients: cocktail.strIngredient15)
     }
-
+    
 }
