@@ -11,7 +11,6 @@ struct Cocktails: Decodable {
     var drinks: [Drink]
 }
 
-
 struct Drink: Decodable {
     let strDrink: String
     let strDrinkThumb: String

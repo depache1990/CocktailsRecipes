@@ -16,9 +16,8 @@ class NetworkManager {
     static let shared = NetworkManager()
     
     private init() {}
-    
+
     func fetchData(_ complition: @escaping(Cocktails) -> Void) {
-        
         let jsonURL = "https://www.thecocktaildb.com/api/json/v1/1/search.php?f="
         urlString = jsonURL + alphabet[alphaBetIndex]
         

@@ -9,7 +9,7 @@ import UIKit
 
 class CocktailsTableViewController: UITableViewController {
     
-    var cocktails: Cocktails?
+    var drink: [Drink] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,22 +19,21 @@ class CocktailsTableViewController: UITableViewController {
     // MARK: - Table view data source
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        cocktails?.drinks.count ?? 0
+        drink.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! TableViewCell
-        let cocktailBar = cocktails?.drinks[indexPath.row]
-        if indexPath.row == (cocktails?.drinks.count ?? 0)-1 && alphaBetIndex < alphabet.count {
+        if indexPath.row == (drink.count)-1 && alphaBetIndex < alphabet.count {
             NetworkManager.shared.fetchData { cocktails in
-                self.cocktails = cocktails
-                //self.tableView.reloadData()
+                self.drink += cocktails.drinks
                 DispatchQueue.main.async {
-                    self.title = "Cocktails Shown \(self.cocktails?.drinks.count ?? 0)"
+                    self.title = "Cocktails Shown \(self.drink.count)"
                     self.tableView.reloadData()
                 }
             }
         }
+        let cocktailBar = drink[indexPath.row]
         cell.configure(with: cocktailBar)
         return cell
     }
@@ -44,17 +43,17 @@ class CocktailsTableViewController: UITableViewController {
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let indexPath = tableView.indexPathForSelectedRow else { return }
-        let cocktailsList = cocktails?.drinks[indexPath.row]
+        let cocktailsList = drink[indexPath.row]
         let details = segue.destination as! CocktailsDetailsViewController
         details.cocktail = cocktailsList
     }
     
     private func fetchData() {
         NetworkManager.shared.fetchData { cocktails in
-            self.cocktails = cocktails
+            self.drink += cocktails.drinks
             self.tableView.reloadData()
             DispatchQueue.main.async {
-                self.title = "Cocktails Shown \(self.cocktails?.drinks.count ?? 0)"
+                self.title = "Cocktails Shown \(self.drink.count)"
                 self.tableView.reloadData()
                 
             }
