@@ -11,6 +11,13 @@ class CocktailsTableViewController: UITableViewController {
     
     var drink: [Drink] = []
     
+    private var alphabet = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"]
+   private var urlString = ""
+    private var alphaBetIndex = 0
+    private var jsonURL = "https://www.thecocktaildb.com/api/json/v1/1/search.php?f="
+    
+    
+    
     private let searchController = UISearchController(searchResultsController: nil)
     private var filteredCocktails = [Drink]()
     private var searchBarIsEmpty: Bool {
@@ -22,7 +29,10 @@ class CocktailsTableViewController: UITableViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        fetchData()
+        
+        UpdateData()
+        fetchData(from: urlString)
+        
         
         searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = false
@@ -43,8 +53,8 @@ class CocktailsTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! TableViewCell
-        if indexPath.row == (drink.count)-1 && NetworkManager.shared.alphaBetIndex < alphabet.count {
-            NetworkManager.shared.fetchData { cocktails in
+        if indexPath.row == (drink.count)-1 && alphaBetIndex < alphabet.count {
+            NetworkManager.shared.fetchData(from: urlString) { cocktails in
                 self.drink += cocktails.drinks
                 DispatchQueue.main.async {
                     self.title = "Cocktails Shown \(self.drink.count)"
@@ -77,10 +87,19 @@ class CocktailsTableViewController: UITableViewController {
         let details = segue.destination as! CocktailsDetailsViewController
         details.cocktail = drinks
     }
-    private func fetchData() {
-        NetworkManager.shared.fetchData { cocktails in
+    private func UpdateData() {
+        for index in alphabet {
+            
+            urlString = jsonURL + index
+            print(index)
+        }
+        
+    }
+    
+    private func fetchData(from url: String?) {
+        NetworkManager.shared.fetchData(from: url) { cocktails in
             self.drink += cocktails.drinks
-            self.tableView.reloadData()
+            //self.tableView.reloadData()
             DispatchQueue.main.async {
                 self.title = "Cocktails Shown \(self.drink.count)"
                 self.tableView.reloadData()

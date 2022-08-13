@@ -7,22 +7,15 @@
 
 import Foundation
 
-
-let alphabet = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"]
-var urlString = ""
-
 class NetworkManager {
-    var alphaBetIndex = 0
+   
     static let shared = NetworkManager()
     
     private init() {}
 
-    func fetchData(_ complition: @escaping(Cocktails) -> Void) {
-        let jsonURL = "https://www.thecocktaildb.com/api/json/v1/1/search.php?f="
-        urlString = jsonURL + alphabet[alphaBetIndex]
-        
-        alphaBetIndex += 1
-        guard let url = URL(string: urlString) else { return }
+    func fetchData(from url: String?, with complition: @escaping(Cocktails) -> Void) {
+        guard let stringURL = url else { return }
+        guard let url = URL(string: stringURL) else { return }
         
         URLSession.shared.dataTask(with: url) { (data, _, error) in
             if let error = error {
