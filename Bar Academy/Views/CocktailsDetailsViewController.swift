@@ -14,7 +14,7 @@ class CocktailsDetailsViewController: UIViewController {
     @IBOutlet weak var alhoholInfoLabel: UILabel!
     @IBOutlet weak var imageView: CocktailsImageView!{
         didSet{
-            imageView.layer.cornerRadius = imageView.frame.height / 3
+            imageView.layer.cornerRadius = imageView.frame.width / 2
         }
     }
      var cocktail: Drink!
@@ -26,10 +26,9 @@ class CocktailsDetailsViewController: UIViewController {
         title = cocktail.strDrink
         descriptionLabel.text = cocktail.strInstructions
         
-        DispatchQueue.main.async {
-            self.imageView.fetchImage(from: self.cocktail.strDrinkThumb)
-            
-        }
+        imageView.fetchImage(from: cocktail.strDrinkThumb ?? "")
+                
+         
     }
  
     private func addIngridients(measure: String?, ingridients: String?) {

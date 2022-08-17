@@ -18,7 +18,6 @@
 		694FE6CE2893D4AD00CAAE6E /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 694FE6CD2893D4AD00CAAE6E /* TableViewCell.swift */; };
 		694FE6D128952D6D00CAAE6E /* CocktailsImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 694FE6D028952D6D00CAAE6E /* CocktailsImageView.swift */; };
 		694FE6D328956BBB00CAAE6E /* CocktailsDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 694FE6D228956BBB00CAAE6E /* CocktailsDetailsViewController.swift */; };
-		69B31305289B0252000DE49A /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69B31304289B0252000DE49A /* DataManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,7 +34,6 @@
 		694FE6CD2893D4AD00CAAE6E /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		694FE6D028952D6D00CAAE6E /* CocktailsImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailsImageView.swift; sourceTree = "<group>"; };
 		694FE6D228956BBB00CAAE6E /* CocktailsDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailsDetailsViewController.swift; sourceTree = "<group>"; };
-		69B31304289B0252000DE49A /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,11 +70,9 @@
 				694FE6B42893CC5600CAAE6E /* SceneDelegate.swift */,
 				694FE6CF2893D4B100CAAE6E /* Views */,
 				694FE6C82893CC8000CAAE6E /* Model */,
-				694FE6B82893CC5600CAAE6E /* Main.storyboard */,
-				694FE6CB2893CED800CAAE6E /* NetworkManager.swift */,
-				69B31304289B0252000DE49A /* DataManager.swift */,
+				69CEDAC328AD4C6B005EF015 /* Service */,
 				694FE6BB2893CC5600CAAE6E /* Assets.xcassets */,
-				694FE6BD2893CC5600CAAE6E /* LaunchScreen.storyboard */,
+				695BA4B928AC1CDC00399A27 /* StoryBoard */,
 				694FE6C02893CC5600CAAE6E /* Info.plist */,
 			);
 			path = "Bar Academy";
@@ -99,6 +95,23 @@
 				694FE6D028952D6D00CAAE6E /* CocktailsImageView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		695BA4B928AC1CDC00399A27 /* StoryBoard */ = {
+			isa = PBXGroup;
+			children = (
+				694FE6B82893CC5600CAAE6E /* Main.storyboard */,
+				694FE6BD2893CC5600CAAE6E /* LaunchScreen.storyboard */,
+			);
+			path = StoryBoard;
+			sourceTree = "<group>";
+		};
+		69CEDAC328AD4C6B005EF015 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				694FE6CB2893CED800CAAE6E /* NetworkManager.swift */,
+			);
+			path = Service;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -179,7 +192,6 @@
 				694FE6D128952D6D00CAAE6E /* CocktailsImageView.swift in Sources */,
 				694FE6CE2893D4AD00CAAE6E /* TableViewCell.swift in Sources */,
 				694FE6B52893CC5600CAAE6E /* SceneDelegate.swift in Sources */,
-				69B31305289B0252000DE49A /* DataManager.swift in Sources */,
 				694FE6C72893CC7C00CAAE6E /* Cocktails.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

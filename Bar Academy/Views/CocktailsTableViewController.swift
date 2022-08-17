@@ -12,11 +12,9 @@ class CocktailsTableViewController: UITableViewController {
     var drink: [Drink] = []
     
     private var alphabet = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"]
-   private var urlString = ""
+    private var urlString = ""
     private var alphaBetIndex = 0
     private var jsonURL = "https://www.thecocktaildb.com/api/json/v1/1/search.php?f="
-    
-    
     
     private let searchController = UISearchController(searchResultsController: nil)
     private var filteredCocktails = [Drink]()
@@ -25,43 +23,36 @@ class CocktailsTableViewController: UITableViewController {
         return text.isEmpty
     }
     private var isFiltering: Bool {
-        return searchController.isActive && !searchBarIsEmpty
+        let searchBarScopeIsFiltering = searchController.searchBar.selectedScopeButtonIndex != 0
+        return searchController.isActive && (!searchBarIsEmpty || searchBarScopeIsFiltering)
     }
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        UpdateData()
+        updateData()
         fetchData(from: urlString)
-        
         
         searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.searchBar.placeholder = "Search for Cocktail"
+        searchController.searchBar.scopeButtonTitles = ["All","Non Alcoholic"]
         navigationItem.searchController = searchController
         definesPresentationContext = true
+        searchController.searchBar.delegate = self
+        
     }
     
     // MARK: - Table view data source
-    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if isFiltering {
-                return filteredCocktails.count
-            }
-            return drink.count
-        
+            return filteredCocktails.count
+        }
+        return drink.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! TableViewCell
-        if indexPath.row == (drink.count)-1 && alphaBetIndex < alphabet.count {
-            NetworkManager.shared.fetchData(from: urlString) { cocktails in
-                self.drink += cocktails.drinks
-                DispatchQueue.main.async {
-                    self.title = "Cocktails Shown \(self.drink.count)"
-                    self.tableView.reloadData()
-                }
-            }
-        }
+        
         var drinks: Drink
         if isFiltering {
             drinks = filteredCocktails[indexPath.row]
@@ -74,7 +65,6 @@ class CocktailsTableViewController: UITableViewController {
     }
     
     // MARK: - Navigation
-
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let indexPath = tableView.indexPathForSelectedRow else { return }
         var drinks: Drink
@@ -83,15 +73,13 @@ class CocktailsTableViewController: UITableViewController {
         } else {
             drinks = drink[indexPath.row]
         }
-        //let cocktailsList = drink[indexPath.row]
         let details = segue.destination as! CocktailsDetailsViewController
         details.cocktail = drinks
     }
-    private func UpdateData() {
+    private func updateData() {
         for index in alphabet {
-            
             urlString = jsonURL + index
-            print(index)
+            fetchData(from: urlString)
         }
         
     }
@@ -111,17 +99,31 @@ class CocktailsTableViewController: UITableViewController {
 
 extension CocktailsTableViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
-        filterContentForSearchText(searchController.searchBar.text!)
+        let searchBar = searchController.searchBar
+        let scope = searchBar.scopeButtonTitles![searchBar.selectedScopeButtonIndex]
+        filterContentForSearchText(searchController.searchBar.text!, scope: scope)
     }
     
-    private func filterContentForSearchText(_ searchText: String) {
+    private func filterContentForSearchText(_ searchText: String, scope: String = "All") {
         
         filteredCocktails = drink.filter({ (drink: Drink) -> Bool in
-            return drink.strDrink.lowercased().contains(searchText.lowercased())
+            
+            let doesCategoryMatch = (scope == "All") || (drink.strDrink == scope) || (drink.strAlcoholic != "Alcoholic")
+            
+            if searchBarIsEmpty {
+                return doesCategoryMatch
+            } else {
+                return doesCategoryMatch && drink.strDrink.lowercased().contains(searchText.lowercased())
+            }
         })
         
         tableView.reloadData()
     }
-    
+}
+
+extension CocktailsTableViewController: UISearchBarDelegate {
+    func searchBar(_ searchbar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
+        filterContentForSearchText(searchbar.text!, scope: searchbar.scopeButtonTitles![selectedScope])
+    }
     
 }

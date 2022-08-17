@@ -18,6 +18,8 @@ class TableViewCell: UITableViewCell {
             imageLabel.backgroundColor = .white
         }
     }
+
+
     
     func configure(with cocktail: Drink?) {
         nameCocktail.text = cocktail?.strDrink

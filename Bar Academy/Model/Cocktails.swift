@@ -13,7 +13,7 @@ struct Cocktails: Decodable {
 
 struct Drink: Decodable {
     let strDrink: String
-    let strDrinkThumb: String
+    let strDrinkThumb: String?
     let idDrink: String
     let strAlcoholic: String
     
@@ -51,26 +51,4 @@ struct Drink: Decodable {
     let strMeasure15: String?
    
 }
-
-struct DataApi {
-    var url: String
-    var alphaBet: [String]
-    var alphaBetIndex: Int
-    var isFetching: Bool
-    
-    var urlString: String
-    
-    static func getDataApi () -> DataApi {
-        DataApi(
-            url: DataManager.shared.cocktailsRecipes,
-            alphaBet: DataManager.shared.alphabet,
-            alphaBetIndex: DataManager.shared.alphaBetIndex,
-            isFetching: DataManager.shared.isFetching,
-            urlString: DataManager.shared.urlString
-        )
-        
-    }
-}
-
-
 
