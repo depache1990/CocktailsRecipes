@@ -16,4 +16,6 @@ The following required functionality is completed:
 ![6q8bsd](https://user-images.githubusercontent.com/75588064/185161562-c6636ac7-d694-4637-93c6-21f04671c1b0.gif)
 
 
-* [ ] Search by Category in UISearchController
+* [X] Search by Category in UISearchController
+
+<img width="353" alt="Снимок экрана 2022-08-19 в 1 08 24 PM" src="https://user-images.githubusercontent.com/75588064/185596671-e9b3126a-89b3-41c4-a1e8-364894e6bc26.png">
