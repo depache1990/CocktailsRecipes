@@ -25,10 +25,14 @@ class CocktailsDetailsViewController: UIViewController {
         createIngrediets()
         title = cocktail.strDrink
         descriptionLabel.text = cocktail.strInstructions
-        
-        imageView.fetchImage(from: cocktail.strDrinkThumb ?? "")
+       // DispatchQueue.global().async {
+
+            DispatchQueue.main.async {
+                self.imageView.fetchImage(from: self.cocktail.strDrinkThumb ?? "")
                 
-         
+            }
+            
+            //}
     }
  
     private func addIngridients(measure: String?, ingridients: String?) {

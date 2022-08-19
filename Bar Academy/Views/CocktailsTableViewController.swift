@@ -44,23 +44,15 @@ class CocktailsTableViewController: UITableViewController {
     
     // MARK: - Table view data source
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if isFiltering {
-            return filteredCocktails.count
-        }
-        return drink.count
+        isFiltering ? filteredCocktails.count : drink.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! TableViewCell
         
-        var drinks: Drink
-        if isFiltering {
-            drinks = filteredCocktails[indexPath.row]
-        } else {
-            drinks = drink[indexPath.row]
-        }
-        //let cocktailBar = drink[indexPath.row]
+        let drinks = isFiltering ? filteredCocktails[indexPath.row] : drink[indexPath.row]
         cell.configure(with: drinks)
+        
         return cell
     }
     
