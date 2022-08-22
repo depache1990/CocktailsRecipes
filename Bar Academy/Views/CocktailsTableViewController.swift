@@ -10,12 +10,7 @@ import UIKit
 class CocktailsTableViewController: UITableViewController {
     
     var drink: [Drink] = []
-    
-    private var alphabet = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"]
-    private var urlString = ""
-    private var alphaBetIndex = 0
-    private var jsonURL = "https://www.thecocktaildb.com/api/json/v1/1/search.php?f="
-    
+
     private let searchController = UISearchController(searchResultsController: nil)
     private var filteredCocktails = [Drink]()
     private var searchBarIsEmpty: Bool {
@@ -26,11 +21,15 @@ class CocktailsTableViewController: UITableViewController {
         let searchBarScopeIsFiltering = searchController.searchBar.selectedScopeButtonIndex != 0
         return searchController.isActive && (!searchBarIsEmpty || searchBarScopeIsFiltering)
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        animateTableView()
+
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        updateData()
-        fetchData(from: urlString)
+        title = "Cocktails Shown \(self.drink.count)"
         
         searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = false
@@ -49,7 +48,6 @@ class CocktailsTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! TableViewCell
-        
         let drinks = isFiltering ? filteredCocktails[indexPath.row] : drink[indexPath.row]
         cell.configure(with: drinks)
         
@@ -68,23 +66,25 @@ class CocktailsTableViewController: UITableViewController {
         let details = segue.destination as! CocktailsDetailsViewController
         details.cocktail = drinks
     }
-    private func updateData() {
-        for index in alphabet {
-            urlString = jsonURL + index
-            fetchData(from: urlString)
-        }
+    private func animateTableView () {
+        tableView.reloadData()
+        let cells = tableView.visibleCells
+        let tableViewheight = tableView.bounds.height
+        var delay: Double = 0
         
-    }
-    
-    private func fetchData(from url: String?) {
-        NetworkManager.shared.fetchData(from: url) { cocktails in
-            self.drink += cocktails.drinks
-            //self.tableView.reloadData()
-            DispatchQueue.main.async {
-                self.title = "Cocktails Shown \(self.drink.count)"
-                self.tableView.reloadData()
-                
-            }
+        for cell in cells {
+            cell.transform = CGAffineTransform(translationX: 0, y: tableViewheight)
+            
+            UIView.animate(
+                withDuration: 1.5,
+                delay: delay * 0.02,
+                usingSpringWithDamping: 0.8,
+                initialSpringVelocity: 0,
+                options: .curveEaseOut,
+                animations: {
+                    cell.transform = CGAffineTransform.identity
+                })
+            delay += 1
         }
     }
 }
@@ -114,7 +114,7 @@ extension CocktailsTableViewController: UISearchResultsUpdating {
 }
 
 extension CocktailsTableViewController: UISearchBarDelegate {
-    func searchBar(_ searchbar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
+     func searchBar(_ searchbar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
         filterContentForSearchText(searchbar.text!, scope: searchbar.scopeButtonTitles![selectedScope])
     }
     

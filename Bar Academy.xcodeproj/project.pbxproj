@@ -18,6 +18,7 @@
 		694FE6CE2893D4AD00CAAE6E /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 694FE6CD2893D4AD00CAAE6E /* TableViewCell.swift */; };
 		694FE6D128952D6D00CAAE6E /* CocktailsImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 694FE6D028952D6D00CAAE6E /* CocktailsImageView.swift */; };
 		694FE6D328956BBB00CAAE6E /* CocktailsDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 694FE6D228956BBB00CAAE6E /* CocktailsDetailsViewController.swift */; };
+		69D1625728B3D50A00F44517 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69D1625628B3D50A00F44517 /* WelcomeViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		694FE6CD2893D4AD00CAAE6E /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		694FE6D028952D6D00CAAE6E /* CocktailsImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailsImageView.swift; sourceTree = "<group>"; };
 		694FE6D228956BBB00CAAE6E /* CocktailsDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailsDetailsViewController.swift; sourceTree = "<group>"; };
+		69D1625628B3D50A00F44517 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,14 +68,12 @@
 		694FE6B12893CC5600CAAE6E /* Bar Academy */ = {
 			isa = PBXGroup;
 			children = (
-				694FE6B22893CC5600CAAE6E /* AppDelegate.swift */,
-				694FE6B42893CC5600CAAE6E /* SceneDelegate.swift */,
-				694FE6CF2893D4B100CAAE6E /* Views */,
+				6968BB1C28B2105D00F0F3B2 /* Application */,
 				694FE6C82893CC8000CAAE6E /* Model */,
+				694FE6CF2893D4B100CAAE6E /* Views */,
 				69CEDAC328AD4C6B005EF015 /* Service */,
-				694FE6BB2893CC5600CAAE6E /* Assets.xcassets */,
 				695BA4B928AC1CDC00399A27 /* StoryBoard */,
-				694FE6C02893CC5600CAAE6E /* Info.plist */,
+				6968BB1D28B210E500F0F3B2 /* Resources */,
 			);
 			path = "Bar Academy";
 			sourceTree = "<group>";
@@ -89,6 +89,7 @@
 		694FE6CF2893D4B100CAAE6E /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				69D1625628B3D50A00F44517 /* WelcomeViewController.swift */,
 				694FE6C92893CE4C00CAAE6E /* CocktailsTableViewController.swift */,
 				694FE6D228956BBB00CAAE6E /* CocktailsDetailsViewController.swift */,
 				694FE6CD2893D4AD00CAAE6E /* TableViewCell.swift */,
@@ -101,9 +102,27 @@
 			isa = PBXGroup;
 			children = (
 				694FE6B82893CC5600CAAE6E /* Main.storyboard */,
-				694FE6BD2893CC5600CAAE6E /* LaunchScreen.storyboard */,
 			);
 			path = StoryBoard;
+			sourceTree = "<group>";
+		};
+		6968BB1C28B2105D00F0F3B2 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				694FE6B22893CC5600CAAE6E /* AppDelegate.swift */,
+				694FE6B42893CC5600CAAE6E /* SceneDelegate.swift */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		6968BB1D28B210E500F0F3B2 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				694FE6BB2893CC5600CAAE6E /* Assets.xcassets */,
+				694FE6BD2893CC5600CAAE6E /* LaunchScreen.storyboard */,
+				694FE6C02893CC5600CAAE6E /* Info.plist */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		69CEDAC328AD4C6B005EF015 /* Service */ = {
@@ -142,7 +161,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1340;
-				LastUpgradeCheck = 1340;
+				LastUpgradeCheck = 1400;
 				TargetAttributes = {
 					694FE6AE2893CC5600CAAE6E = {
 						CreatedOnToolsVersion = 13.4.1;
@@ -185,6 +204,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				69D1625728B3D50A00F44517 /* WelcomeViewController.swift in Sources */,
 				694FE6B32893CC5600CAAE6E /* AppDelegate.swift in Sources */,
 				694FE6D328956BBB00CAAE6E /* CocktailsDetailsViewController.swift in Sources */,
 				694FE6CA2893CE4C00CAAE6E /* CocktailsTableViewController.swift in Sources */,
@@ -268,6 +288,8 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -322,6 +344,8 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -341,7 +365,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = PD9MGCM3R5;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "Bar Academy/Info.plist";
+				INFOPLIST_FILE = "Bar Academy/Resources/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -369,7 +393,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = PD9MGCM3R5;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "Bar Academy/Info.plist";
+				INFOPLIST_FILE = "Bar Academy/Resources/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;

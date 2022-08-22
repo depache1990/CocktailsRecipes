@@ -9,7 +9,7 @@ import UIKit
 
 class CocktailsImageView: UIImageView {
 
-    func fetchImage(from url: String) {
+     func fetchImage(from url: String) {
         guard let imageURL = URL(string: url) else {
             return
         }
@@ -25,7 +25,6 @@ class CocktailsImageView: UIImageView {
             DispatchQueue.main.async {
                 self.image = UIImage(data: data)
             }
-            
             // Сохранить изображение в кэш
             self.seveDataToCache(with: data, and: response)
             
@@ -41,7 +40,6 @@ class CocktailsImageView: UIImageView {
     }
     
     private func getChachedImage(from url: URL) -> UIImage? {
-        
         let request = URLRequest(url: url)
         
         if let cachedResponse = URLCache.shared.cachedResponse(for: request) {
