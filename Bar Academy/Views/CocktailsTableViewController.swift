@@ -77,7 +77,7 @@ class CocktailsTableViewController: UITableViewController {
             
             UIView.animate(
                 withDuration: 1.5,
-                delay: delay * 0.02,
+                delay: delay * 0.03,
                 usingSpringWithDamping: 0.8,
                 initialSpringVelocity: 0,
                 options: .curveEaseOut,

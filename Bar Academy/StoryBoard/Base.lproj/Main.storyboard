@@ -178,7 +178,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Jt-eH-UcE">
-                                <rect key="frame" x="50" y="447" width="290" height="163"/>
+                                <rect key="frame" x="110.66666666666667" y="401.33333333333331" width="168.66666666666663" height="41.666666666666686"/>
                                 <color key="backgroundColor" systemColor="systemGrayColor"/>
                                 <color key="tintColor" systemColor="systemRedColor"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Show Cocktails">
@@ -197,10 +197,8 @@
                         <viewLayoutGuide key="safeArea" id="okp-7v-0Un"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="okp-7v-0Un" firstAttribute="bottom" secondItem="5Jt-eH-UcE" secondAttribute="bottom" constant="200" id="RLh-40-VMg"/>
-                            <constraint firstItem="5Jt-eH-UcE" firstAttribute="leading" secondItem="okp-7v-0Un" secondAttribute="leading" constant="50" id="bBd-pB-E6h"/>
-                            <constraint firstItem="okp-7v-0Un" firstAttribute="trailing" secondItem="5Jt-eH-UcE" secondAttribute="trailing" constant="50" id="jyb-s0-uDi"/>
-                            <constraint firstItem="5Jt-eH-UcE" firstAttribute="top" secondItem="okp-7v-0Un" secondAttribute="top" constant="400" id="q9t-TM-BXv"/>
+                            <constraint firstItem="5Jt-eH-UcE" firstAttribute="centerY" secondItem="gvg-e6-z1s" secondAttribute="centerY" id="NcM-SE-aAr"/>
+                            <constraint firstItem="5Jt-eH-UcE" firstAttribute="centerX" secondItem="gvg-e6-z1s" secondAttribute="centerX" id="rYW-FJ-pOi"/>
                         </constraints>
                     </view>
                 </viewController>
