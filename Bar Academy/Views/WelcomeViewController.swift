@@ -27,8 +27,8 @@ class WelcomeViewController: UIViewController {
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let cocktailsVK = segue.destination as? UINavigationController else { return }
-        let myProfileVC = cocktailsVK.topViewController as? CocktailsTableViewController
-        myProfileVC?.drink = drinks
+        let myProfile = cocktailsVK.topViewController as? CocktailsTableViewController
+        myProfile?.drink = drinks
         
     }
     
@@ -43,13 +43,7 @@ class WelcomeViewController: UIViewController {
     private func fetchData(from url: String?) {
         NetworkManager.shared.fetchData(from: url) { cocktails in
             self.drinks += cocktails.drinks
-            DispatchQueue.global().async {
-                DispatchQueue.main.async {
-                    self.title = "Cocktails Shown \(self.drinks.count)"
-                    
-                    
-                }
-            }
+//          
         }
     }
     

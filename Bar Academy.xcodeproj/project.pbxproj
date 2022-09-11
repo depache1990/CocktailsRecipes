@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6935D90228CCBB950040ECA1 /* SavedTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6935D90128CCBB950040ECA1 /* SavedTableViewController.swift */; };
 		694FE6B32893CC5600CAAE6E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 694FE6B22893CC5600CAAE6E /* AppDelegate.swift */; };
 		694FE6B52893CC5600CAAE6E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 694FE6B42893CC5600CAAE6E /* SceneDelegate.swift */; };
 		694FE6BA2893CC5600CAAE6E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 694FE6B82893CC5600CAAE6E /* Main.storyboard */; };
@@ -22,6 +23,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6935D90128CCBB950040ECA1 /* SavedTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedTableViewController.swift; sourceTree = "<group>"; };
 		694FE6AF2893CC5600CAAE6E /* Bar Academy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Bar Academy.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		694FE6B22893CC5600CAAE6E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		694FE6B42893CC5600CAAE6E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -94,6 +96,7 @@
 				694FE6D228956BBB00CAAE6E /* CocktailsDetailsViewController.swift */,
 				694FE6CD2893D4AD00CAAE6E /* TableViewCell.swift */,
 				694FE6D028952D6D00CAAE6E /* CocktailsImageView.swift */,
+				6935D90128CCBB950040ECA1 /* SavedTableViewController.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -207,6 +210,7 @@
 				69D1625728B3D50A00F44517 /* WelcomeViewController.swift in Sources */,
 				694FE6B32893CC5600CAAE6E /* AppDelegate.swift in Sources */,
 				694FE6D328956BBB00CAAE6E /* CocktailsDetailsViewController.swift in Sources */,
+				6935D90228CCBB950040ECA1 /* SavedTableViewController.swift in Sources */,
 				694FE6CA2893CE4C00CAAE6E /* CocktailsTableViewController.swift in Sources */,
 				694FE6CC2893CED800CAAE6E /* NetworkManager.swift in Sources */,
 				694FE6D128952D6D00CAAE6E /* CocktailsImageView.swift in Sources */,
