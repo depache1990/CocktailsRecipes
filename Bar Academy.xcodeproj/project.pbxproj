@@ -19,7 +19,10 @@
 		694FE6CE2893D4AD00CAAE6E /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 694FE6CD2893D4AD00CAAE6E /* TableViewCell.swift */; };
 		694FE6D128952D6D00CAAE6E /* CocktailsImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 694FE6D028952D6D00CAAE6E /* CocktailsImageView.swift */; };
 		694FE6D328956BBB00CAAE6E /* CocktailsDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 694FE6D228956BBB00CAAE6E /* CocktailsDetailsViewController.swift */; };
+		69CC0EE328CDD497002DEADE /* CreateCocktailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69CC0EE228CDD497002DEADE /* CreateCocktailViewController.swift */; };
 		69D1625728B3D50A00F44517 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69D1625628B3D50A00F44517 /* WelcomeViewController.swift */; };
+		69E73A9128D0705100CFFF72 /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69E73A9028D0705100CFFF72 /* StorageManager.swift */; };
+		69F5595C28D6F2FC00BCD078 /* SavedDetailsCocktailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69F5595B28D6F2FC00BCD078 /* SavedDetailsCocktailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,7 +40,10 @@
 		694FE6CD2893D4AD00CAAE6E /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		694FE6D028952D6D00CAAE6E /* CocktailsImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailsImageView.swift; sourceTree = "<group>"; };
 		694FE6D228956BBB00CAAE6E /* CocktailsDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailsDetailsViewController.swift; sourceTree = "<group>"; };
+		69CC0EE228CDD497002DEADE /* CreateCocktailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCocktailViewController.swift; sourceTree = "<group>"; };
 		69D1625628B3D50A00F44517 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
+		69E73A9028D0705100CFFF72 /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
+		69F5595B28D6F2FC00BCD078 /* SavedDetailsCocktailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedDetailsCocktailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +79,7 @@
 				6968BB1C28B2105D00F0F3B2 /* Application */,
 				694FE6C82893CC8000CAAE6E /* Model */,
 				694FE6CF2893D4B100CAAE6E /* Views */,
+				69E73A8F28D06CCA00CFFF72 /* ViewCell */,
 				69CEDAC328AD4C6B005EF015 /* Service */,
 				695BA4B928AC1CDC00399A27 /* StoryBoard */,
 				6968BB1D28B210E500F0F3B2 /* Resources */,
@@ -94,9 +101,10 @@
 				69D1625628B3D50A00F44517 /* WelcomeViewController.swift */,
 				694FE6C92893CE4C00CAAE6E /* CocktailsTableViewController.swift */,
 				694FE6D228956BBB00CAAE6E /* CocktailsDetailsViewController.swift */,
-				694FE6CD2893D4AD00CAAE6E /* TableViewCell.swift */,
 				694FE6D028952D6D00CAAE6E /* CocktailsImageView.swift */,
 				6935D90128CCBB950040ECA1 /* SavedTableViewController.swift */,
+				69CC0EE228CDD497002DEADE /* CreateCocktailViewController.swift */,
+				69F5595B28D6F2FC00BCD078 /* SavedDetailsCocktailViewController.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -132,8 +140,17 @@
 			isa = PBXGroup;
 			children = (
 				694FE6CB2893CED800CAAE6E /* NetworkManager.swift */,
+				69E73A9028D0705100CFFF72 /* StorageManager.swift */,
 			);
 			path = Service;
+			sourceTree = "<group>";
+		};
+		69E73A8F28D06CCA00CFFF72 /* ViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				694FE6CD2893D4AD00CAAE6E /* TableViewCell.swift */,
+			);
+			path = ViewCell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -209,12 +226,15 @@
 			files = (
 				69D1625728B3D50A00F44517 /* WelcomeViewController.swift in Sources */,
 				694FE6B32893CC5600CAAE6E /* AppDelegate.swift in Sources */,
+				69CC0EE328CDD497002DEADE /* CreateCocktailViewController.swift in Sources */,
+				69E73A9128D0705100CFFF72 /* StorageManager.swift in Sources */,
 				694FE6D328956BBB00CAAE6E /* CocktailsDetailsViewController.swift in Sources */,
 				6935D90228CCBB950040ECA1 /* SavedTableViewController.swift in Sources */,
 				694FE6CA2893CE4C00CAAE6E /* CocktailsTableViewController.swift in Sources */,
 				694FE6CC2893CED800CAAE6E /* NetworkManager.swift in Sources */,
 				694FE6D128952D6D00CAAE6E /* CocktailsImageView.swift in Sources */,
 				694FE6CE2893D4AD00CAAE6E /* TableViewCell.swift in Sources */,
+				69F5595C28D6F2FC00BCD078 /* SavedDetailsCocktailViewController.swift in Sources */,
 				694FE6B52893CC5600CAAE6E /* SceneDelegate.swift in Sources */,
 				694FE6C72893CC7C00CAAE6E /* Cocktails.swift in Sources */,
 			);
@@ -370,9 +390,11 @@
 				DEVELOPMENT_TEAM = PD9MGCM3R5;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Bar Academy/Resources/Info.plist";
+				INFOPLIST_KEY_NSCameraUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -398,9 +420,11 @@
 				DEVELOPMENT_TEAM = PD9MGCM3R5;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Bar Academy/Resources/Info.plist";
+				INFOPLIST_KEY_NSCameraUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (

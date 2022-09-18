@@ -7,11 +7,19 @@
 
 import Foundation
 
+struct MakeCocktails: Codable {
+    let ingridients: String
+    let instruction: String
+    let nameCocktail: String
+    //var favoriteStatus: Bool
+}
+
 struct Cocktails: Decodable {
     var drinks: [Drink]
 }
 
 struct Drink: Decodable {
+
     let strDrink: String
     let strDrinkThumb: String?
     let idDrink: String
@@ -51,4 +59,5 @@ struct Drink: Decodable {
     let strMeasure15: String?
    
 }
+
 
