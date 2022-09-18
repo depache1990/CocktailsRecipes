@@ -10,7 +10,8 @@ import UIKit
 class CocktailsTableViewController: UITableViewController {
     
     var drink: [Drink] = []
-
+    var makeCocktail: [MakeCocktails] = []
+    
     private let searchController = UISearchController(searchResultsController: nil)
     private var filteredCocktails = [Drink]()
     private var searchBarIsEmpty: Bool {
@@ -49,7 +50,9 @@ class CocktailsTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! TableViewCell
         let drinks = isFiltering ? filteredCocktails[indexPath.row] : drink[indexPath.row]
-        cell.configure(with: drinks)
+        //let makeDrinks = makeCocktail[indexPath.row]
+        cell.configure(with: drinks, cellIndex: indexPath.row)
+        cell.tintColor = .lightGray
         
         return cell
     }

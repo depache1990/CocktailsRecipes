@@ -15,6 +15,7 @@ class WelcomeViewController: UIViewController {
     private var jsonURL = "https://www.thecocktaildb.com/api/json/v1/1/search.php?f="
     
     var drinks: [Drink] = []
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
