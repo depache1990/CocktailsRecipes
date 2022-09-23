@@ -14,17 +14,25 @@ class StorageManager {
     
     private init() {}
     
-    func save(cocktail: MakeCocktails) {
+    func save(cocktail: CocktailModel) {
         var cocktails = fetchCocktails()
         cocktails.append(cocktail)
         guard let data = try? JSONEncoder().encode(cocktails) else { return }
         userDefaults.set(data, forKey: cocktailKey)
     }
     
-   func fetchCocktails() -> [MakeCocktails] {
+   func fetchCocktails() -> [CocktailModel] {
        guard let data = userDefaults.object(forKey: cocktailKey) as? Data else { return [] }
-       guard let cocktails = try? JSONDecoder().decode([MakeCocktails].self, from: data) else { return [] }
+       guard let cocktails = try? JSONDecoder().decode([CocktailModel].self, from: data) else { return [] }
        return cocktails
+    }
+    
+    func deleteContact(at index: Int) {
+        var cocktail = fetchCocktails()
+        cocktail.remove(at: index)
+        
+        guard let data = try? JSONEncoder().encode(cocktail) else { return }
+        userDefaults.set(data, forKey: cocktailKey)
     }
     
     

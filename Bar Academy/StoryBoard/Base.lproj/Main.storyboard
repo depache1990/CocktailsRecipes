@@ -224,7 +224,8 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="FBh-Jb-cCg" kind="presentation" trigger="accessoryAction" modalPresentationStyle="fullScreen" id="foA-7h-X0S"/>
+                                    <segue destination="FBh-Jb-cCg" kind="show" identifier="showDetails" id="prg-Bo-dxx"/>
+                                    <segue destination="efR-3w-kRj" kind="presentation" identifier="showCocktail" trigger="accessoryAction" id="Pv3-h1-Oz3"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -237,7 +238,7 @@
                     <navigationItem key="navigationItem" id="Y6x-Vw-3iI">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="QgX-P8-EcW">
                             <connections>
-                                <segue destination="efR-3w-kRj" kind="presentation" id="vag-z8-2Qm"/>
+                                <action selector="logInAction" destination="AHn-9Q-nJj" id="Bnn-hP-JQr"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -245,7 +246,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Hm9-m2-Wjr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="707.69230769230762" y="979.62085308056862"/>
+            <point key="canvasLocation" x="709" y="980"/>
         </scene>
         <!--Saved Details Cocktail View Controller-->
         <scene sceneID="adj-fm-3MN">
@@ -256,14 +257,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="lIJ-Br-Qvy">
-                                <rect key="frame" x="24" y="71" width="342" height="350"/>
+                                <rect key="frame" x="24" y="115" width="342" height="350"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="350" id="7ot-ic-ddl"/>
                                     <constraint firstAttribute="width" constant="342" id="C4Y-kY-hXv"/>
                                 </constraints>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="55" translatesAutoresizingMaskIntoConstraints="NO" id="5M3-3e-fJg">
-                                <rect key="frame" x="24" y="464" width="342" height="171"/>
+                                <rect key="frame" x="24" y="508" width="342" height="171"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cocktail Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G8w-IW-qN6">
                                         <rect key="frame" x="0.0" y="0.0" width="342" height="20.333333333333332"/>
@@ -296,6 +297,7 @@
                             <constraint firstItem="lIJ-Br-Qvy" firstAttribute="centerX" secondItem="4wo-02-FC7" secondAttribute="centerX" id="m46-Le-noT"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="uru-B4-oJ8"/>
                     <connections>
                         <outlet property="cocktailName" destination="G8w-IW-qN6" id="256-Dn-ybZ"/>
                         <outlet property="ingridientsText" destination="pGX-36-QQS" id="dLx-CW-Kuu"/>
@@ -344,7 +346,7 @@
                                 </subviews>
                             </stackView>
                             <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iSP-ix-lPP">
-                                <rect key="frame" x="0.0" y="0.0" width="390" height="44"/>
+                                <rect key="frame" x="-1" y="0.0" width="390" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <items>
                                     <navigationItem title="Title" id="VEv-gA-D5X">
@@ -432,7 +434,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="VHf-jr-9mg"/>
                     <connections>
-                        <outlet property="cocktailName" destination="G6Z-rO-Ker" id="Cm8-vC-UgD"/>
+                        <outlet property="cocktailNameTextField" destination="G6Z-rO-Ker" id="Cm8-vC-UgD"/>
                         <outlet property="ingridientsText" destination="h8W-El-Neb" id="oQ1-d9-l5W"/>
                         <outlet property="instructionText" destination="em0-NC-QQW" id="1h5-V9-Piv"/>
                         <outlet property="myCocktailsImage" destination="4Ut-RK-2dL" id="kRx-ep-hSq"/>

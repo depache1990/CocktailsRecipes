@@ -7,11 +7,18 @@
 
 import Foundation
 
-struct MakeCocktails: Codable {
+class CocktailModel: Codable {
+    
     let ingridients: String
     let instruction: String
     let nameCocktail: String
-    //var favoriteStatus: Bool
+    
+    init(ingridients: String, instruction: String, nameCocktail: String) {
+        self.ingridients = ingridients
+        self.instruction = instruction
+        self.nameCocktail = nameCocktail
+    }
+
 }
 
 struct Cocktails: Decodable {
