@@ -9,7 +9,7 @@ import UIKit
 
 class SavedDetailsCocktailViewController: UIViewController {
 
-    var cocktailDetail: MakeCocktails!
+    var cocktailDetail: CocktailModel?
     
     @IBOutlet weak var myCocktailsImage: UIImageView!
     
@@ -20,8 +20,10 @@ class SavedDetailsCocktailViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        cocktailName.text = cocktailDetail.nameCocktail
-
+        
+        cocktailName.text = cocktailDetail?.nameCocktail
+        ingridientsText.text = cocktailDetail?.ingridients
+        instructionText.text = cocktailDetail?.instruction
         
     }
 

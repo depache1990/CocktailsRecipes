@@ -9,7 +9,9 @@ import UIKit
 
 class CreateCocktailViewController: UIViewController {
     
-    var delegate: CreateCocktailViewControllerDelegate!
+//    var cocktail = CocktailModel()
+    
+    var delegate: CreateCocktailViewControllerDelegate?
     
     @IBOutlet weak var myCocktailsImage: UIImageView!
     
@@ -17,7 +19,7 @@ class CreateCocktailViewController: UIViewController {
     
     @IBOutlet weak var instructionText: UITextView!
     
-    @IBOutlet weak var cocktailName: UITextField!
+    @IBOutlet weak var cocktailNameTextField: UITextField!
     
     
     override func viewDidLoad() {
@@ -26,17 +28,11 @@ class CreateCocktailViewController: UIViewController {
     
     
     @IBAction func takePhotoAction() {
-        if UIImagePickerController.isSourceTypeAvailable(UIImagePickerController.SourceType.camera) {
-            let imagePicker = UIImagePickerController()
-            imagePicker.sourceType = .camera
-            imagePicker.allowsEditing = false
-            imagePicker.delegate = self
-            present(imagePicker, animated: true)
-            
-        }
+       presentPhoto()
     }
     
     @IBAction func savePhotoAction() {
+        
     }
     
     @IBAction func doneButtonPressed() {
@@ -48,18 +44,65 @@ class CreateCocktailViewController: UIViewController {
     }
     
     private func saveAndExit() {
-        guard let textIngridients = ingridientsText.text else { return }
-        guard let textInstruction = instructionText.text else { return }
-        guard let textNameCocktail = cocktailName.text else { return }
+        guard let textIngridient = ingridientsText.text?.trimmingCharacters(in: .whitespacesAndNewlines)  else { return }
+        guard let textInstruction = instructionText.text?.trimmingCharacters(in: .whitespacesAndNewlines)  else { return }
+        guard let textNameCocktail = cocktailNameTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines)  else { return }
         
-        let cocktails = MakeCocktails(ingridients: textIngridients, instruction: textInstruction, nameCocktail: textNameCocktail)
-        StorageManager.shared.save(cocktail: cocktails)
-        delegate.saveCocktail(cocktails)
+        let cocktail = CocktailModel(ingridients: textIngridient, instruction: textInstruction, nameCocktail: textNameCocktail)
+
+        delegate?.saveCocktail(with: cocktail, ingridients: textIngridient, instruction: textInstruction, nameCocktail: textNameCocktail)
+
         dismiss(animated: true)
     }
 }
 
 extension CreateCocktailViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    private func presentPhoto() {
+        let actionSheet = UIAlertController(
+            title: "Cocktail Picture",
+            message: "How would you like select a picture",
+            preferredStyle: .actionSheet
+        )
+        actionSheet.addAction(UIAlertAction(
+            title: "Cansel",
+            style: .cancel)
+        )
+        actionSheet.addAction(UIAlertAction(
+            title: "Take picture",
+            style: .default,
+            handler: { [weak self] _ in
+                self?.presentCamera()
+            })
+        )
+        actionSheet.addAction(UIAlertAction(
+            title: "Choose Photo",
+            style: .default,
+            handler: { [weak self] _ in
+                self?.presentPhotoPicker()
+            })
+        )
+        present(actionSheet, animated: true)
+        
+    }
+    
+    private func presentCamera() {
+        let imagePicker = UIImagePickerController()
+        imagePicker.sourceType = .camera
+        imagePicker.allowsEditing = true
+        imagePicker.delegate = self
+        present(imagePicker, animated: true)
+    }
+    
+    private func presentPhotoPicker() {
+        let imagePicker = UIImagePickerController()
+        imagePicker.sourceType = .photoLibrary
+        imagePicker.allowsEditing = true
+        imagePicker.delegate = self
+        present(imagePicker, animated: true)
+        
+    }
+    
+    
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         picker.dismiss(animated: true)
     }
@@ -71,4 +114,14 @@ extension CreateCocktailViewController: UIImagePickerControllerDelegate, UINavig
         
         
     }
+}
+
+extension CreateCocktailViewController: UITextFieldDelegate {
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesBegan(touches, with: event)
+        view.endEditing(true)
+    }
+    
+    
+
 }

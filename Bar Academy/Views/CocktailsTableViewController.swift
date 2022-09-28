@@ -10,7 +10,7 @@ import UIKit
 class CocktailsTableViewController: UITableViewController {
     
     var drink: [Drink] = []
-    var makeCocktail: [MakeCocktails] = []
+    var makeCocktail: [CocktailModel] = []
     
     private let searchController = UISearchController(searchResultsController: nil)
     private var filteredCocktails = [Drink]()
