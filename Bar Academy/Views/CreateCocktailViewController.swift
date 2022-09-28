@@ -28,14 +28,7 @@ class CreateCocktailViewController: UIViewController {
     
     
     @IBAction func takePhotoAction() {
-        if UIImagePickerController.isSourceTypeAvailable(UIImagePickerController.SourceType.camera) {
-            let imagePicker = UIImagePickerController()
-            imagePicker.sourceType = .camera
-            imagePicker.allowsEditing = false
-            imagePicker.delegate = self
-            present(imagePicker, animated: true)
-            
-        }
+       presentPhoto()
     }
     
     @IBAction func savePhotoAction() {
@@ -64,6 +57,52 @@ class CreateCocktailViewController: UIViewController {
 }
 
 extension CreateCocktailViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    private func presentPhoto() {
+        let actionSheet = UIAlertController(
+            title: "Cocktail Picture",
+            message: "How would you like select a picture",
+            preferredStyle: .actionSheet
+        )
+        actionSheet.addAction(UIAlertAction(
+            title: "Cansel",
+            style: .cancel)
+        )
+        actionSheet.addAction(UIAlertAction(
+            title: "Take picture",
+            style: .default,
+            handler: { [weak self] _ in
+                self?.presentCamera()
+            })
+        )
+        actionSheet.addAction(UIAlertAction(
+            title: "Choose Photo",
+            style: .default,
+            handler: { [weak self] _ in
+                self?.presentPhotoPicker()
+            })
+        )
+        present(actionSheet, animated: true)
+        
+    }
+    
+    private func presentCamera() {
+        let imagePicker = UIImagePickerController()
+        imagePicker.sourceType = .camera
+        imagePicker.allowsEditing = true
+        imagePicker.delegate = self
+        present(imagePicker, animated: true)
+    }
+    
+    private func presentPhotoPicker() {
+        let imagePicker = UIImagePickerController()
+        imagePicker.sourceType = .photoLibrary
+        imagePicker.allowsEditing = true
+        imagePicker.delegate = self
+        present(imagePicker, animated: true)
+        
+    }
+    
+    
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         picker.dismiss(animated: true)
     }
